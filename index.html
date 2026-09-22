@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batizado de Délio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream:#f8f3eb;
+      --paper:#fffdf9;
+      --brown:#5c4638;
+      --dark:#2f2925;
+      --gold:#b79663;
+      --line:#ded3c5;
+      --green:#426b4a;
+      --red:#9a4d43;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--cream);
+      color:var(--dark);
+      font-family:"Montserrat",sans-serif;
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1080px,92%);
+      margin:auto;
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(248,243,235,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(183,150,99,.22);
+    }
+
+    .nav-inner{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:"Parisienne",cursive;
+      font-size:32px;
+      color:var(--brown);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:26px;
+      list-style:none;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
+
+    .nav-links a{
+      transition:.2s;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold);
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:125px 20px 75px;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(rgba(247,242,234,.70),rgba(247,242,234,.90)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+      transform:scale(1.02);
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      background:radial-gradient(circle at center,rgba(255,255,255,.45),transparent 55%);
+    }
+
+    .hero-frame{
+      position:absolute;
+      inset:25px;
+      border:1px solid rgba(183,151,103,.28);
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    .hero-frame::before,
+    .hero-frame::after{
+      content:"✦";
+      position:absolute;
+      color:var(--gold);
+      font-size:13px;
+      background:var(--cream);
+      padding:0 10px;
+    }
+
+    .hero-frame::before{top:-10px;left:50%;transform:translateX(-50%)}
+    .hero-frame::after{bottom:-10px;left:50%;transform:translateX(-50%)}
+
+    .hero-content{
+      width:min(850px,100%);
+      animation:heroIn 1.1s ease both;
+    }
+
+    @keyframes heroIn{
+      from{opacity:0;transform:translateY(22px)}
+      to{opacity:1;transform:none}
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:10px;
+      color:var(--gold);
+      margin-bottom:14px;
+      font-weight:500;
+    }
+
+    .hero-name{
+      font-family:"Parisienne",cursive;
+      color:var(--brown);
+      font-size:clamp(55px,10vw,105px);
+      line-height:.95;
+      margin-bottom:2px;
+    }
+
+    h1{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(48px,7vw,78px);
+      line-height:.9;
+      font-weight:500;
+      color:var(--brown);
+      margin-bottom:22px;
+    }
+
+    .hero-subtitle{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(21px,3vw,29px);
+      color:#6b594b;
+      font-style:italic;
+    }
+
+    .ornament{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:28px auto;
+      color:var(--gold);
+    }
+
+    .ornament::before,
+    .ornament::after{
+      content:"";
+      width:85px;
+      height:1px;
+      background:var(--gold);
+      opacity:.55;
+    }
+
+    .hero-date{
+      font-family:"Cormorant Garamond",serif;
+      font-size:28px;
+      color:var(--brown);
+      margin-bottom:18px;
+    }
+
+    .hero-text{
+      max-width:650px;
+      margin:auto;
+      font-size:14px;
+      color:#665950;
+    }
+
+    .scroll-down{
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      gap:5px;
+      margin-top:32px;
+      color:var(--gold);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .scroll-down span:last-child{
+      animation:bounce 1.8s infinite;
+      font-size:17px;
+    }
+
+    @keyframes bounce{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(5px)}
+    }
+
+    /* CONTADOR */
+    .countdown{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .countdown-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      max-width:720px;
+      margin:auto;
+      border:1px solid var(--line);
+      background:var(--line);
+      gap:1px;
+    }
+
+    .count-item{
+      background:var(--paper);
+      text-align:center;
+      padding:25px 10px;
+    }
+
+    .count-number{
+      font-family:"Cormorant Garamond",serif;
+      font-size:42px;
+      line-height:1;
+      color:var(--brown);
+    }
+
+    .count-label{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:8px;
+      color:var(--gold);
+      margin-top:7px;
+    }
+
+    /* PADRINHOS */
+    .godparents{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .godparents-box{
+      max-width:800px;
+      margin:auto;
+      text-align:center;
+      padding:48px 25px;
+      border:1px solid var(--line);
+      position:relative;
+    }
+
+    .godparents-box::before{
+      content:"✦";
+      position:absolute;
+      top:-12px;left:50%;
+      transform:translateX(-50%);
+      background:var(--paper);
+      padding:0 13px;
+      color:var(--gold);
+    }
+
+    .godparents-names{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-top:25px;
+    }
+
+    .godparent{
+      padding:25px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .godparent .role{
+      text-transform:uppercase;
+      color:var(--gold);
+      letter-spacing:2px;
+      font-size:9px;
+      margin-bottom:8px;
+    }
+
+    .godparent .name{
+      font-family:"Cormorant Garamond",serif;
+      font-size:27px;
+      color:var(--brown);
+    }
+
+    /* SECTIONS */
+    section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:45px;
+    }
+
+    .section-title span{
+      display:block;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:10px;
+      margin-bottom:10px;
+    }
+
+    .section-title h2{
+      font-family:"Cormorant Garamond",serif;
+      color:var(--brown);
+      font-size:50px;
+      font-weight:500;
+      line-height:1;
+    }
+
+    /* DETALHES */
+    .details{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .details-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1px;
+      background:var(--line);
+      border:1px solid var(--line);
+    }
+
+    .detail{
+      background:var(--paper);
+      padding:35px 20px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .detail-icon{
+      font-size:25px;
+      margin-bottom:12px;
+    }
+
+    .detail small{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--gold);
+      font-size:9px;
+      margin-bottom:8px;
+    }
+
+    .detail strong{
+      display:block;
+      font-family:"Cormorant Garamond",serif;
+      font-size:25px;
+      font-weight:600;
+      color:var(--brown);
+    }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 14px;
+      background: var(--brown);
+      color: #fff;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .map-btn:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* MAPAS INTERATIVOS INCORPORADOS */
+    .maps-section {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .map-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 15px;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+
+    .map-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      color: var(--brown);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 2px;
+    }
+
+    /* MENSAGEM */
+    .message{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:55px;
+      align-items:center;
+    }
+
+    .message-image{
+      min-height:470px;
+      border-radius:2px;
+      background:
+        linear-gradient(rgba(60,40,25,.1),rgba(60,40,25,.1)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85")
+        center/cover no-repeat;
+    }
+
+    .message-copy p{
+      margin-bottom:18px;
+      color:#65584f;
+      font-size:15px;
+    }
+
+    .signature{
+      font-family:"Parisienne",cursive;
+      font-size:38px;
+      color:var(--gold);
+      margin-top:28px;
+    }
+
+    /* RSVP */
+    .rsvp{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+    }
+
+    .form-wrap{
+      max-width:720px;
+      margin:auto;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:45px;
+      box-shadow:0 12px 35px rgba(70,45,25,.05);
+    }
+
+    .field{
+      margin-bottom:22px;
+    }
+
+    label{
+      display:block;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:1.8px;
+      color:var(--brown);
+      margin-bottom:8px;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      border:1px solid #d8cec1;
+      background:#fffdf9;
+      padding:13px 14px;
+      border-radius:2px;
+      font-family:"Montserrat",sans-serif;
+      font-size:14px;
+      color:var(--dark);
+      outline:none;
+      transition:.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(183,150,99,.09);
+    }
+
+    textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    button{
+      width:100%;
+      border:0;
+      background:var(--brown);
+      color:#fff;
+      padding:15px 20px;
+      font-family:"Montserrat",sans-serif;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    button:hover:not(:disabled){
+      background:#443328;
+      transform:translateY(-1px);
+    }
+
+    button:disabled{
+      opacity:.65;
+      cursor:wait;
+    }
+
+    .status{
+      display:none;
+      margin-top:18px;
+      padding:14px 16px;
+      font-size:13px;
+      text-align:center;
+      border:1px solid;
+    }
+
+    .status.ok{
+      display:block;
+      color:var(--green);
+      background:#f1f7f2;
+      border-color:#c6dcc9;
+    }
+
+    .status.error{
+      display:block;
+      color:var(--red);
+      background:#fbf2f1;
+      border-color:#e2c4c0;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:35px 20px;
+      text-align:center;
+      border-top:1px solid var(--line);
+      color:#806f63;
+      font-size:11px;
+      letter-spacing:1px;
+    }
+
+    .heart{
+      color:var(--gold);
+      font-size:17px;
+    }
+
+    /* RESPONSIVO */
+    @media(max-width:800px){
+      .nav-inner{ min-height:62px; }
+      .brand{ font-size:27px; }
+      .nav-links{ gap:12px; font-size:9px; letter-spacing:1px; }
+      .details-grid{ grid-template-columns:1fr 1fr; }
+      .maps-section { grid-template-columns: 1fr; }
+      .message{ grid-template-columns:1fr; gap:30px; }
+      .message-image{ min-height:360px; }
+    }
+
+    @media(max-width:520px){
+      .nav-links li:nth-child(2),
+      .nav-links li:nth-child(3){ display:none; }
+      section{ padding:70px 0; }
+      .section-title h2{ font-size:42px; }
+      .details-grid{ grid-template-columns:1fr; }
+      .form-wrap{ padding:28px 20px; }
+      .two{ grid-template-columns:1fr; gap:0; }
+      .hero-date{ font-size:24px; }
+      .hero-text{ font-size:14px; }
+    }
+
+    /* INTRO */
+    body.intro-active{overflow:hidden}.intro-screen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 20px;background:linear-gradient(rgba(248,243,235,.72),rgba(248,243,235,.88)),url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=90") center/cover no-repeat;transition:opacity .9s ease,visibility .9s ease}.intro-screen::before{content:"";position:absolute;inset:22px;border:1px solid rgba(183,151,103,.45);pointer-events:none}.intro-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}.intro-content{position:relative;z-index:2;width:min(620px,100%);padding:45px 25px;animation:introIn 1.2s ease both}@keyframes introIn{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}.intro-small{text-transform:uppercase;letter-spacing:5px;font-size:10px;color:var(--gold);margin-bottom:18px}.intro-name{font-family:"Parisienne",cursive;font-size:clamp(75px,15vw,125px);line-height:.9;color:var(--brown);margin-bottom:12px}.intro-title{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,6vw,52px);font-weight:500;line-height:1;color:var(--brown)}.intro-line{display:flex;align-items:center;justify-content:center;gap:12px;margin:25px 0;color:var(--gold)}.intro-line::before,.intro-line::after{content:"";width:70px;height:1px;background:var(--gold);opacity:.6}.intro-date{font-family:"Cormorant Garamond",serif;font-size:22px;color:#6b594b;margin-bottom:30px}.intro-text{max-width:450px;margin:0 auto 32px;font-size:13px;color:#665950}.intro-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:230px;border:1px solid var(--brown);background:var(--brown);color:#fff;padding:16px 28px;font-family:"Montserrat",sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:2px;cursor:pointer;transition:.3s ease}.intro-button:hover{background:#443328;transform:translateY(-2px);box-shadow:0 10px 25px rgba(70,45,25,.15)}.intro-button span{font-size:16px;transition:transform .3s ease}.intro-button:hover span{transform:translateX(4px)}@media(max-width:520px){.intro-screen::before{inset:14px}.intro-content{padding:35px 20px}.intro-small{letter-spacing:3px}.intro-text{font-size:12px}.intro-button{width:100%;max-width:280px}}
+  </style>
+</head>
+
+<body class="intro-active">
+  <div class="intro-screen" id="introScreen">
+    <div class="intro-content">
+      <div class="intro-small">Com muito amor</div>
+      <div class="intro-name">Délio</div>
+      <div class="intro-title">O meu Batizado</div>
+      <div class="intro-line">✦</div>
+      <div class="intro-date">1 de Novembro · 2026 · 12h30</div>
+      <p class="intro-text">É com muita alegria que convidamos a nossa família e amigos para celebrarem connosco este momento tão especial.</p>
+      <button class="intro-button" id="enterSite" type="button">Abrir convite <span>→</span></button>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio">Délio</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#detalhes">Detalhes</a></li>
+        <li><a href="#batizado">O Batizado</a></li>
+        <li><a href="#confirmacao">Confirmação</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-frame"></div>
+
+    <div class="hero-content">
+      <div class="eyebrow">Com muito amor</div>
+      <div class="hero-name">Délio</div>
+      <h1>O meu Batizado</h1>
+      <div class="hero-subtitle">Um dia de amor, fé e família</div>
+
+      <div class="ornament">✦</div>
+
+      <div class="hero-date">1 de Novembro · 2026 · 12h30</div>
+
+      <p class="hero-text">
+        É com muita alegria que convidamos a nossa família e amigos
+        para celebrarem connosco este momento tão especial na vida
+        do nosso querido Délio.
+      </p>
+
+      <a class="scroll-down" href="#detalhes" aria-label="Descer">
+        <span>Descobrir</span>
+        <span>↓</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTADOR -->
+  <section class="countdown">
+    <div class="container">
+      <div class="section-title">
+        <span>Contagem decrescente</span>
+        <h2>Até ao grande dia</h2>
+      </div>
+
+      <div class="countdown-grid" id="countdown">
+        <div class="count-item">
+          <div class="count-number" id="days">00</div>
+          <div class="count-label">Dias</div>
+        </div>
+        <div class="count-item">
+          <div class="count-number" id="hours">00</div>
+          <div class="count-label">Horas</div>
+        </div>
+        <div class="count-item">
+          <div class="count-number" id="minutes">00</div>
+          <div class="count-label">Minutos</div>
+        </div>
+        <div class="count-item">
+          <div class="count-number" id="seconds">00</div>
+          <div class="count-label">Segundos</div>
+        </div>
+      </div>
+
+      <p id="countdownMessage" style="text-align:center;margin-top:16px;color:#806f63;font-size:12px;"></p>
+    </div>
+  </section>
+
+  <!-- DETALHES -->
+  <section class="details" id="detalhes">
+    <div class="container">
+      <div class="section-title">
+        <span>Guarde esta data</span>
+        <h2>Detalhes</h2>
+      </div>
+
+      <div class="details-grid">
+        <div class="detail">
+          <div class="detail-icon">♡</div>
+          <small>Data</small>
+          <strong>1 de Novembro</strong>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">◷</div>
+          <small>Hora</small>
+          <strong>12h30</strong>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">⌖</div>
+          <small>Igreja</small>
+          <strong>Sé de Braga</strong>
+          <a href="https://maps.app.goo.gl/gwxJPLDcKeuk1bnk8" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Abrir no GPS</a>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">♧</div>
+          <small>Almoço</small>
+          <strong>Casa de Pasto Antigo Mariano</strong>
+          <a href="https://maps.app.goo.gl/gFb4hpXY1nejYvcM8" target="_blank" rel="noopener noreferrer" class="map-btn">📍 Abrir no GPS</a>
+        </div>
+      </div>
+
+      <!-- MAPAS INTERATIVOS INCORPORADOS -->
+      <div class="maps-section">
+        <div class="map-card">
+          <h3>Cerimónia — Sé de Braga</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2985.34298150499!2d-8.4273295!3d41.5498871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24fecbe2085cfd%3A0xb214bf689efdf3b3!2sS%C3%A9%20de%20Braga!5e0!3m2!1spt-PT!2spt!4v1700000000000!5m2!1spt-PT!2spt" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div class="map-card">
+          <h3>Copo de Água — Casa de Pasto Antigo Mariano</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2984.954751761614!2d-8.4111394!3d41.5583196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24fe3787722883%3A0xa63a2a6ce2f960bb!2sCasa%20de%20Pasto%20Antigo%20Mariano!5e0!3m2!1spt-PT!2spt!4v1700000000000!5m2!1spt-PT!2spt" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MENSAGEM -->
+  <section id="batizado">
+    <div class="container">
+      <div class="message">
+        <div class="message-image"></div>
+        <div class="message-copy">
+          <div class="section-title" style="text-align:left;margin-bottom:25px;">
+            <span>Um dia especial</span>
+            <h2>Uma nova bênção</h2>
+          </div>
+          <p>
+            O batizado é um momento de fé, amor e união.
+            Queremos partilhar este dia tão importante com
+            as pessoas que fazem parte da nossa vida.
+          </p>
+          <p>
+            A presença de cada um de vocês tornará esta celebração
+            ainda mais bonita e inesquecível.
+          </p>
+          <div class="signature">Com carinho,</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PADRINHOS -->
+  <section class="godparents" id="padrinhos">
+    <div class="container">
+      <div class="section-title">
+        <span>Ao meu lado</span>
+        <h2>Os meus padrinhos</h2>
+        <p>Porque há pessoas especiais que tornam cada caminho ainda mais bonito.</p>
+      </div>
+
+      <div class="godparents-box">
+        <div class="godparents-names">
+          <div class="godparent">
+            <div class="role">Padrinho</div>
+            <div class="name">Luís Amílcar</div>
+          </div>
+
+          <div class="godparent">
+            <div class="role">Madrinha</div>
+            <div class="name">Mariana Borlido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMAÇÃO -->
+  <section class="rsvp" id="confirmacao">
+    <div class="container">
+      <div class="section-title">
+        <span>Esperamos por si</span>
+        <h2>Confirme a sua presença</h2>
+      </div>
+
+      <div class="form-wrap">
+        <form
+          id="rsvpForm"
+          action="https://script.google.com/macros/s/AKfycbzq4dcXPDUihTaI6aeSh3gExhUrhtymcGK2C2HpezW4rrFPN14v9qva_6_yhvq8uEsj/exec"
+          method="POST"
+        >
+          <div class="field">
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" name="nome" placeholder="O seu nome" autocomplete="name" required>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="telefone">Telefone / WhatsApp *</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="9XXXXXXXX" autocomplete="tel" required>
+            </div>
+
+            <div class="field">
+              <label for="convidados">Número de pessoas *</label>
+              <input 
+                type="number" 
+                id="convidados" 
+                name="convidados" 
+                min="1" 
+                max="20" 
+                value="1" 
+                oninput="if(this.value < 1 && this.value !== '') this.value = 1;" 
+                required
+              >
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="resposta">Vai participar? *</label>
+            <select id="resposta" name="resposta" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Sim">Sim, vou participar</option>
+              <option value="Nao">Não poderei participar</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Observação</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Alguma informação que queira deixar..."></textarea>
+          </div>
+
+          <button type="submit" id="submitBtn">Confirmar presença →</button>
+
+          <div id="status" class="status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    Feito com <span class="heart">♥</span> para celebrar o Batizado de Délio
+  </footer>
+
+  <script>
+    const introScreen=document.getElementById("introScreen");const enterSite=document.getElementById("enterSite");enterSite.addEventListener("click",()=>{introScreen.classList.add("hidden");document.body.classList.remove("intro-active");window.scrollTo(0,0);});
+    
+    // Configuração do Contador para 01/11/2026 às 12:00
+    const targetDate = new Date("2026-11-01T12:30:00").getTime();
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const countdownMessage = document.getElementById("countdownMessage");
+
+    function updateCountdown(){
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if(distance <= 0){
+        daysEl.textContent = "00";
+        hoursEl.textContent = "00";
+        minutesEl.textContent = "00";
+        secondsEl.textContent = "00";
+        countdownMessage.textContent = "O grande dia chegou. 🤍";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(days).padStart(2, "0");
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+      countdownMessage.textContent = "Estamos a contar os dias para este momento especial.";
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Formulario RSVP
+    const form = document.getElementById("rsvpForm");
+    const statusBox = document.getElementById("status");
+    const button = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", function(event){
+      event.preventDefault();
+
+      const resposta = document.getElementById("resposta").value;
+      const convidados = parseInt(document.getElementById("convidados").value, 10);
+
+      if(!resposta){
+        statusBox.className = "status error";
+        statusBox.textContent = "Selecione se vai ou não participar.";
+        return;
+      }
+
+      if(!convidados || convidados < 1){
+        statusBox.className = "status error";
+        statusBox.textContent = "O número de pessoas deve ser no mínimo 1.";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "A ENVIAR...";
+      statusBox.className = "status";
+      statusBox.textContent = "";
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => {
+        statusBox.className = "status ok";
+        statusBox.textContent = "✓ A sua confirmação foi enviada. Muito obrigado!";
+        form.reset();
+        document.getElementById("convidados").value = "1";
+      })
+      .catch((err) => {
+        console.error(err);
+        statusBox.className = "status error";
+        statusBox.textContent = "Não foi possível confirmar o envio. Verifique a ligação e tente novamente.";
+      })
+      .finally(() => {
+        button.disabled = false;
+        button.textContent = "Confirmar presença →";
+      });
+    });
+  </script>
+
+</body>
+</html>
